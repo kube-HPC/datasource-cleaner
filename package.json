@@ -1,0 +1,56 @@
+{
+    "name": "datasource-cleaner",
+    "version": "2.0.6",
+    "description": "this service responsible for un-mounting datasources",
+    "main": "app.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "test": "NODE_ENV=test mocha tests --colors --recursive --exit",
+        "test:cov": "./node_modules/nyc/bin/nyc.js --exclude=bootstrap.js --reporter=html --reporter=text --reporter=lcov npm run test",
+        "start": "node app",
+        "format": "prettier --write .",
+        "build": "./dockerfile/build.sh datasource-cleaner"
+    },
+    "pre-commit": {
+        "run": [
+            "lint",
+            "test"
+        ]
+    },
+    "keywords": [
+        "hkube",
+        "hkube-core"
+    ],
+    "author": "Hkube",
+    "license": "MIT",
+    "dependencies": {
+        "@hkube/config": "^2.0.11",
+        "@hkube/db": "^1.0.20",
+        "@hkube/logger": "^1.0.27",
+        "moment": "^2.29.1",
+        "requestretry": "^4.1.2"
+    },
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "coveralls": "^3.1.0",
+        "eslint": "^7.19.0",
+        "eslint-config-airbnb": "^18.2.1",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-config-prettier": "^7.2.0",
+        "eslint-plugin-chai-friendly": "^0.6.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-jsdoc": "^31.6.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "mocha": "^8.2.1",
+        "mockery": "^2.1.0",
+        "nock": "^13.0.7",
+        "nyc": "^15.1.0",
+        "pre-commit": "^1.2.2",
+        "prettier": "^2.2.1",
+        "prettier-plugin-jsdoc": "^0.3.8",
+        "sinon": "^9.2.4"
+    }
+}
