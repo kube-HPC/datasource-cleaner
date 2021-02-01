@@ -1,6 +1,6 @@
 {
     "name": "datasource-cleaner",
-    "version": "2.0.6",
+    "version": "2.0.0",
     "description": "this service responsible for un-mounting datasources",
     "main": "app.js",
     "directories": {
@@ -30,6 +30,7 @@
         "@hkube/config": "^2.0.11",
         "@hkube/db": "^1.0.20",
         "@hkube/logger": "^1.0.27",
+        "fs-extra": "^9.1.0",
         "moment": "^2.29.1",
         "requestretry": "^4.1.2"
     },

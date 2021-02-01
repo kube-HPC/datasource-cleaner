@@ -51,6 +51,14 @@ config.db = {
     },
 };
 
+config.fs = {
+    baseDirectory:
+        process.env.BASE_FS_ADAPTER_DIRECTORY || '/var/tmp/fs/storage',
+    baseDatasourcesDirectory:
+        process.env.BASE_DATASOURCES_DIRECTORY ||
+        '/var/tmp/fs/datasources-storage',
+};
+
 config.directories = {
     dataSourcesInUse:
         process.env.DATASOURCES_IN_USE_FOLDER || 'dataSources-in-use',

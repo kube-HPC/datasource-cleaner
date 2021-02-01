@@ -5,13 +5,13 @@ const moment = require('moment');
 
 const { main, logger } = configIt.load();
 const log = new Logger(main.serviceName, logger);
-const component = require('./lib/consts/componentNames').MAIN;
-const cleaner = require('./lib/cleaner/cleaner');
+const component = require('./lib/componentNames').MAIN;
+const cleaner = require('./lib/cleaner');
 
-const modules = [require('./lib/api-server-client')];
+const modules = [require('./lib/db'), require('./lib/cleaner')];
 
 class Bootstrap {
-    async init() {
+    async init(skipCleanup = false) {
         moment.defaultFormat = 'DD/MM/YYYY HH:mm:ss';
         try {
             this._handleErrors();
@@ -19,7 +19,9 @@ class Bootstrap {
                 component,
             });
             await Promise.all(modules.map(m => m.init(main)));
-            await cleaner.clean();
+            if (!skipCleanup) {
+                await cleaner.clean();
+            }
             return main;
         } catch (error) {
             this._onInitFailed(error);
