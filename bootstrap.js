@@ -21,6 +21,7 @@ class Bootstrap {
             await Promise.all(modules.map(m => m.init(main)));
             if (!skipCleanup) {
                 await cleaner.clean();
+                await cleaner.db.close();
             }
             return main;
         } catch (error) {
