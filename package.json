@@ -1,6 +1,6 @@
 {
     "name": "datasource-cleaner",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "description": "this service responsible for un-mounting datasources",
     "main": "app.js",
     "directories": {
